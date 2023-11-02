@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Kristi", cursive;
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        .main_header {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background-color: hsl(0, 0%, 94%);
+            display: grid;
+            place-items: center;
+        }
+
+        .center_div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 80%;
+            max-width: 600px; /* Adjust the max-width as needed */
+            color: #000;
+            text-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);
+            font-size: 4rem; /* Adjust the font size as needed */
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .balloon {
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        .firework {
+            position: absolute;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            html {
+                font-size: 35%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particles-js" class="main_header"></div>
+    
+    <div class="center_div">
+        <p>
+            Happy B'day To You Vibhav
+            <br />
+            🎂God fill your life with lots of happiness!🎂
+        </p>
+    </div>
+
+    <!-- Balloons -->
+    <div class="balloon" data-balloon="&#127880;" data-balloon-pos="up"></div>
+    <div class="balloon" data-balloon="&#127880;" data-balloon-pos="up"></div>
+    <div class="balloon" data-balloon="&#127880;" data-balloon-pos="up"></div>
+
+    <!-- Fireworks -->
+    <div class="firework" id="firework1"></div>
+    <div class="firework" id="firework2"></div>
+    <div class="firework" id="firework3"></div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/balloon-css@0.7.1/dist/balloon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mattboldt/typed.js@2.0.12"></script>
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#ffffff' },
+                shape: { type: 'circle', stroke: { width: 0, color: '#000000' } },
+                opacity: { value: 0.5, random: false, anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false } },
+                size: { value: 5, random: true, anim: { enable: false, speed: 40, size_min: 0.1, sync: false } },
+                line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.4, width: 1 },
+                move: {
+                    enable: true,
+                    speed: 6,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: { enable: false, rotateX: 600, rotateY: 1200 }
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'grab' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                },
+                modes: { grab: { distance: 140, line_linked: { opacity: 1 } }, push: { particles_nb: 4 } }
+            },
+            retina_detect: true
+        });
+
+        // Balloon animation
+        const balloons = document.querySelectorAll('.balloon');
+        balloons.forEach((balloon, index) => {
+            setTimeout(() => {
+                balloon.style.animation = 'floatUp 1s ease-in-out infinite';
+            }, index * 500);
+        });
+
+        // Firework animation
+        const fireworks = document.querySelectorAll('.firework');
+        fireworks.forEach((firework, index) => {
+            setTimeout(() => {
+                firework.style.animation = 'firework 2s forwards';
+            }, index * 3000);
+        });
+    </script>
+</body>
+</html>
